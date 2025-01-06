@@ -4,12 +4,12 @@ import styles from './CountryButton.module.css'
 interface CountryButtonProps {
     countryFlag: string
     name: string
-    id: string
+    code: string
 }
 
-export default function CountryButton({countryFlag, name, id}: CountryButtonProps) {
+export default function CountryButton({countryFlag, name, code}: CountryButtonProps) {
   return (
-    <Link href={`/country/${id}`} className={styles.countryButton}>
+    <Link href={`/country/${code}`} className={styles.countryButton}>
       <span className="label">{name}</span>
       <span>{countryFlag}</span>
     </Link>

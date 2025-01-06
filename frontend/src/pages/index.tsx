@@ -2,14 +2,18 @@ import CountryButton from "@/components/_atoms/CountryButton/CountryButton";
 import SearchForm from "@/components/_molecules/Form/SearchForm";
 import { useQuery } from '@apollo/client';
 import { GET_ALL_COUNTRIES } from "@/graphql/queries/countries";
+export interface Continent {
+  id: string;
+  name: string;
+}
 
 export interface Country {
   id: string;
   name: string;
   emoji: string;
   code: string;
+  continent: Continent;
 }
-
 export default function Home() {
   const { loading, error, data } = useQuery<{ countries: Country[] }>(GET_ALL_COUNTRIES);
 
@@ -26,7 +30,7 @@ export default function Home() {
       <SearchForm/>
       <div className="countriesContainer">
         {data.countries.map((country:Country) => (
-            <CountryButton key={country.id} id={country.id} name={country.name} countryFlag={country.emoji}/>
+            <CountryButton key={country.id} code={country.code} name={country.name} countryFlag={country.emoji}/>
         ))}
       </div>
     </>

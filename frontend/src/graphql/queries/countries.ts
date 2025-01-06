@@ -6,6 +6,20 @@ export const GET_ALL_COUNTRIES = gql`
       id
       name
       emoji
+      code
     }
   }
+`;
+
+export const GET_COUNTRY_BY_CODE = gql`
+query Country($code: String!) {
+  country(code: $code) {
+    code
+    continent {
+      name
+    }
+    emoji
+    name
+  }
+}
 `;
